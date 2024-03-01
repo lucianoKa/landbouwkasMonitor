@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,7 +19,8 @@ namespace LBM
         { 
             get 
             {
-                string databasefile = ConfigurationManager.AppSettings["datafile"];
+                string basePath = AppDomain.CurrentDomain.BaseDirectory;
+                string databasefile = Path.Combine(basePath, "Data", ConfigurationManager.AppSettings["datafile"]);
                 return $"Data Source={dataSource};AttachDbFilename={databasefile};Integrated Security=True"; 
             } 
         }
