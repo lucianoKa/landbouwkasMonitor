@@ -57,7 +57,6 @@ namespace LBM
             this.btnStyles = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
             this.KcmPalette = new ComponentFactory.Krypton.Toolkit.KryptonContextMenu();
             this.kryptonContextMenuItems2 = new ComponentFactory.Krypton.Toolkit.KryptonContextMenuItems();
-            this.kryptonRibbonGroupButton1 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
             this.kryptonRibbonGroup3 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup();
             this.StyleManager = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.kryptonContextMenuItems1 = new ComponentFactory.Krypton.Toolkit.KryptonContextMenuItems();
@@ -77,8 +76,8 @@ namespace LBM
             this.ribbon.RibbonTabs.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonTab[] {
             this.tabHome,
             this.tabView});
-            this.ribbon.SelectedTab = this.tabHome;
-            this.ribbon.Size = new System.Drawing.Size(692, 115);
+            this.ribbon.SelectedTab = this.tabView;
+            this.ribbon.Size = new System.Drawing.Size(923, 135);
             this.ribbon.TabIndex = 0;
             // 
             // buttonSpecHelp
@@ -223,8 +222,7 @@ namespace LBM
             // kryptonRibbonGroupTriple5
             // 
             this.kryptonRibbonGroupTriple5.Items.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupItem[] {
-            this.btnStyles,
-            this.kryptonRibbonGroupButton1});
+            this.btnStyles});
             // 
             // btnStyles
             // 
@@ -239,30 +237,28 @@ namespace LBM
             this.KcmPalette.Items.AddRange(new ComponentFactory.Krypton.Toolkit.KryptonContextMenuItemBase[] {
             this.kryptonContextMenuItems2});
             // 
-            // kryptonRibbonGroupButton1
-            // 
-            this.kryptonRibbonGroupButton1.Click += new System.EventHandler(this.kryptonRibbonGroupButton1_Click);
-            // 
             // StyleManager
             // 
             this.StyleManager.GlobalPaletteMode = ComponentFactory.Krypton.Toolkit.PaletteModeManager.ProfessionalSystem;
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(692, 516);
+            this.ClientSize = new System.Drawing.Size(923, 635);
             this.Controls.Add(this.ribbon);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
-            this.MinimumSize = new System.Drawing.Size(350, 349);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimumSize = new System.Drawing.Size(461, 419);
             this.Name = "Main";
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Landbouw Monitor";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Main_KeyDown);
             this.Resize += new System.EventHandler(this.Main_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             this.ResumeLayout(false);
@@ -300,7 +296,6 @@ namespace LBM
         private ComponentFactory.Krypton.Toolkit.KryptonContextMenu KcmPalette;
         private ComponentFactory.Krypton.Toolkit.KryptonContextMenuItems kryptonContextMenuItems2;
         private ComponentFactory.Krypton.Toolkit.KryptonContextMenuItems kryptonContextMenuItems1;
-        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton kryptonRibbonGroupButton1;
     }
 }
 

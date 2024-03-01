@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LBM
 {
@@ -52,19 +49,19 @@ namespace LBM
 
         public class Bodemgezondheid
         {
-            public double PH { get; set; }
+            public decimal PH { get; set; }
             public Voedingsstof Voedingsstoffen { get; set; }
         }        
 
         public class Temperatuur
         {
-            public int Waarde { get; set; }
+            public decimal Waarde { get; set; }
             public string Eenheid { get; set; }
         }
 
         public class Vochtigheid
         {
-            public int Waarde { get; set; }
+            public decimal Waarde { get; set; }
             public string Eenheid { get; set; }
         }
 

@@ -61,12 +61,75 @@ namespace LBM.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string ERROR {
+            get {
+                return ResourceManager.GetString("ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This curve name is invalid!.
+        /// </summary>
+        internal static string ERROR_BAD_GRAPH_NAME {
+            get {
+                return ResourceManager.GetString("ERROR_BAD_GRAPH_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are no points!.
+        /// </summary>
+        internal static string ERROR_NOPOINTS {
+            get {
+                return ResourceManager.GetString("ERROR_NOPOINTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This type of axis cannot be used with this method!.
+        /// </summary>
+        internal static string ERROR_WRONG_AXE_TYPE {
+            get {
+                return ResourceManager.GetString("ERROR_WRONG_AXE_TYPE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This property cannot be used for this axis type!.
+        /// </summary>
+        internal static string ERROR_WRONG_PROPERTY_USAGE_AXE {
+            get {
+                return ResourceManager.GetString("ERROR_WRONG_PROPERTY_USAGE_AXE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap loading {
             get {
                 object obj = ResourceManager.GetObject("loading", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to P.
+        /// </summary>
+        internal static string PRIMARY_AXE_SYMBOL {
+            get {
+                return ResourceManager.GetString("PRIMARY_AXE_SYMBOL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to S.
+        /// </summary>
+        internal static string SECONDARY_AXE_SYMBOL {
+            get {
+                return ResourceManager.GetString("SECONDARY_AXE_SYMBOL", resourceCulture);
             }
         }
     }

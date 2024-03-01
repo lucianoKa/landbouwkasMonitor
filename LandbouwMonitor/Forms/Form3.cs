@@ -8,12 +8,6 @@
 //  Version 4.6.0.0 	www.ComponentFactory.com
 // *****************************************************************************
 
-using System;
-using System.Text;
-using System.Drawing;
-using System.Windows.Forms;
-using System.ComponentModel;
-using System.Collections.Generic;
 using ComponentFactory.Krypton.Toolkit;
 
 namespace LBM

@@ -127,14 +127,14 @@ namespace LBM.Controls.MetingenMGV
             DataGridViewColumnCollection columns = grid.Columns;
 
             //columns.Add(DataGridColumnFactory.IntegerColumnStyle("GewasId", "ID"));
-            columns.Add(DataGridColumnFactory.IntegerColumnStyle("GewasNaam", "Gewas"));
-            columns.Add(DataGridColumnFactory.IntegerColumnStyle("Temperatuur", "Temperatuur"));
-            columns.Add(DataGridColumnFactory.IntegerColumnStyle("Vochtigheid", "Vochtigheid"));
-            columns.Add(DataGridColumnFactory.IntegerColumnStyle("PH", "PH"));
+            columns.Add(DataGridColumnFactory.TextColumnStyle("GewasNaam", "Gewas"));
+            columns.Add(DataGridColumnFactory.DecimalColumnStyle("Temperatuur", "Temperatuur", 1));
+            columns.Add(DataGridColumnFactory.DecimalColumnStyle("Vochtigheid", "Vochtigheid", 1));
+            columns.Add(DataGridColumnFactory.DecimalColumnStyle("PH", "PH", 1));
             columns.Add(DataGridColumnFactory.IntegerColumnStyle("Stikstof", "Stikstof"));
             columns.Add(DataGridColumnFactory.IntegerColumnStyle("Fosfor", "Fosfor"));
             columns.Add(DataGridColumnFactory.IntegerColumnStyle("Kalium", "Kalium"));
-            columns.Add(DataGridColumnFactory.IntegerColumnStyle("Intensiteit", "Intensiteit"));
+            columns.Add(DataGridColumnFactory.TextColumnStyle("Intensiteit", "Intensiteit"));
             columns.Add(DataGridColumnFactory.IntegerColumnStyle("UrenPerDag", "UrenPerDag"));
         }
 

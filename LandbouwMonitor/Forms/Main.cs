@@ -146,12 +146,16 @@ namespace LBM
 
         #endregion
 
-        private void kryptonRibbonGroupButton1_Click(object sender, EventArgs e)
+
+        private void Main_KeyDown(object sender, KeyEventArgs e)
         {
-            Form2 form = new Form2();
-            form.MdiParent = this;
-            form.WindowState = FormWindowState.Maximized;
-            form.Show();
+            if (e.Control && e.KeyCode == Keys.Q)
+            {
+                Form2 form = new Form2();
+                form.MdiParent = this;
+                //form.WindowState = FormWindowState.Maximized;
+                form.Show();
+            }
         }
     }
 }

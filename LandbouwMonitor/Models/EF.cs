@@ -71,7 +71,7 @@ namespace LBM
             [NotMapped]
             public string Temperatuur { get; set; }
 
-            public int TWaarde {  get; set; }
+            public decimal TWaarde {  get; set; }
 
             public string TEenheid { get; set; }
             #endregion
@@ -80,13 +80,13 @@ namespace LBM
             [NotMapped]
             public string Vochtigheid { get; set; }
 
-            public int VWaarde { get; set; }
+            public decimal VWaarde { get; set; }
 
             public string VEenheid { get; set; }
             #endregion
 
             #region Bodemgezondheid
-            public double PH { get; set; }
+            public decimal PH { get; set; }
             public int Stikstof { get; set; }
             public int Fosfor { get; set; }
             public int Kalium { get; set; }

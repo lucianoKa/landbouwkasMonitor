@@ -129,6 +129,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Settings.cs" />
+    <Compile Include="Controls\GraphCtrl\GraphControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\GraphCtrl\GraphControl.Designer.cs">
+      <DependentUpon>GraphControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GraphCtrl\MsgBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\GraphCtrl\MsgBox.Designer.cs">
+      <DependentUpon>MsgBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\MetingenMGV\Classes\DataGridColumnFactory.cs" />
     <Compile Include="Controls\MetingenMGV\Classes\DatagridviewHelper.cs" />
     <Compile Include="Controls\MetingenMGV\Classes\TypeMethods.cs" />
@@ -220,6 +232,9 @@
     <Compile Include="Forms\WaitForm.Designer.cs">
       <DependentUpon>WaitForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Controls\GraphCtrl\MsgBox.resx">
+      <DependentUpon>MsgBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\MetingenMGV\DgvResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DgvResource.Designer.cs</LastGenOutput>

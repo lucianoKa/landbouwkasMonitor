@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -112,34 +112,32 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ERROR" xml:space="preserve">
-    <value>Error</value>
-  </data>
-  <data name="ERROR_BAD_GRAPH_NAME" xml:space="preserve">
-    <value>This curve name is invalid!</value>
-  </data>
-  <data name="ERROR_NOPOINTS" xml:space="preserve">
-    <value>There are no points!</value>
-  </data>
-  <data name="ERROR_WRONG_AXE_TYPE" xml:space="preserve">
-    <value>This type of axis cannot be used with this method!</value>
-  </data>
-  <data name="ERROR_WRONG_PROPERTY_USAGE_AXE" xml:space="preserve">
-    <value>This property cannot be used for this axis type!</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\loading.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="PRIMARY_AXE_SYMBOL" xml:space="preserve">
-    <value>P</value>
-  </data>
-  <data name="SECONDARY_AXE_SYMBOL" xml:space="preserve">
-    <value>S</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAIAEBAQAAAABAAoAQAAJgAAACAgEAAAAAQA6AIAAE4BAAAoAAAAEAAAACAAAAABAAQAAAAAAIAA
+        AAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAgAAAgAAAAICAAIAAAACAAIAAgIAAAICAgADAwMAAAAD/AAD/
+        AAAA//8A/wAAAP8A/wD//wAA////AAAAAAAAAAAAAAAAAAAAAAAAAAsAAAAAAAAAALAAAAAAAAAACwAA
+        AAAAAAu7sAAAAAAAALu7AAAAAAAAC7uwAAAAAAAAu7sAAAAAAAC7u7AAAAALu7AAAAAAAAC7uwAAAAAA
+        AAu7sAAAAAAAALu7AAAAAAAAC7uwAAAAAAAAAAAA5/8AAPP/AADx/wAA+P8AAOB/AADwPwAA+B8AAPwP
+        AAD+BwAA4AMAAPABAAD4HwAA/A8AAP4HAAD/AwAA/4EAACgAAAAgAAAAQAAAAAEABAAAAAAAAAIAAAAA
+        AAAAAAAAEAAAABAAAAAAAAAAAACAAACAAAAAgIAAgAAAAIAAgACAgAAAgICAAMDAwAAAAP8AAP8AAAD/
+        /wD/AAAA/wD/AP//AAD///8AAACIiAAAAAAAAAAAAAAAAAAAd3iAAAAAAAAAAAAAAAAAAAB3iIAAAAAA
+        AAAAAAAAAACwB3eIAAAAAAAAAAAAAAAACwAHeIAAAAAAAAAAAAAAAAC7AHeIAAAAAAAAAAAAAAAAC7AH
+        eIgAAAAAAAAAAAAAAAC7AAd4gAAAAAAAAAAAAAAAC7sAd4iAAAAAAAAAAAAAAAC7sAd3iAAAAAAAAAAA
+        AAAAC7sAB3iAAAAAAAAAAAAAu7u7uwB3iIAAAAAAAAAAAAu7u7uwB3eIAAAAAAAAAAAAu7u7uwAHeIAA
+        AAAAAAAAAAu7u7u7AHeIoAAAAAAAAAAAu7u7u7AHeIgAAAAAAAAAAAu7u7u7AAd4gAAAAAAAAAAAu7u7
+        u7sAd4AAAAAAAAu7u7u7u7u7sAAAAAAAAAAAu7u7u7u7u7uwAAAAAAAAAAu7u7u7AAAAAAAAAAAAAAAA
+        u7u7u7AHeAAAAAAAAAAAAAu7u7u7AHeAAAAAAAAAAAAAu7u7u7AHeAAAAAAAAAAAAAu7u7u7AHeAAAAA
+        AAAAAAAAu7u7u7AHcAAAAAAAAAAAAAu7u7u7AHAAAAAAAAAAAAAAu7u7u7AAAAAAAAAAAAAAAAu7u7u7
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADw////8H///+Af
+        ///gD///4Af///AD///4AP///AB///4AH///AA///gAH//4AAf/+AAD//wAAf/+AAB//wAAP/+AAB/8A
+        AAf/AAAP/wAAD/+AAA//wAA//+AAH//wAA//+AAH//wAB//+AAf//wAH//+AB///wAf//////////w==
+</value>
   </data>
 </root>
