@@ -159,5 +159,51 @@ namespace LBM
                     break;
             }
         }
+
+        private void tabControl1_TabIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabControl1_Click(object sender, EventArgs e)
+        {
+            //TabPage  tab = tabControl1.SelectedTab;
+
+            //Font BoldFont = new Font(tabControl1.Font.Name, 10, FontStyle.Bold);
+            //tab.Font = BoldFont;
+            
+            //Refresh();
+        }
+
+        private void TabControl_DrawItem(object sender, DrawItemEventArgs e)
+        {
+
+            // Identify which TabPage is currently selected
+            TabPage SelectedTab = tabControl1.TabPages[e.Index];
+
+            // Get the area of the header of this TabPage
+            Rectangle HeaderRect = tabControl1.GetTabRect(e.Index);
+
+            // Create a Brush to paint the Text
+            SolidBrush TextBrush = new SolidBrush(Color.Black);
+
+            // Set the Alignment of the Text
+            StringFormat sf = new StringFormat();
+            sf.Alignment = StringAlignment.Center;
+            sf.LineAlignment = StringAlignment.Center;
+
+            // Paint the Text using the appropriate Bold setting 
+            if (Convert.ToBoolean(e.State & DrawItemState.Selected))
+            {
+                Font BoldFont = new Font(tabControl1.Font.Name, tabControl1.Font.Size, FontStyle.Bold);
+                e.Graphics.DrawString(SelectedTab.Text, BoldFont, TextBrush, HeaderRect, sf);
+            }
+            else
+                e.Graphics.DrawString(SelectedTab.Text, e.Font, TextBrush, HeaderRect, sf);
+
+            // Job done - dispose of the Brush
+            TextBrush.Dispose();
+        }
+
     }
 }

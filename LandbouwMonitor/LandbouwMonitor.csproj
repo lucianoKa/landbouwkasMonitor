@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -19,6 +20,10 @@
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -31,12 +36,8 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,8 +46,7 @@
     <OutputPath>bin\debug\</OutputPath>
     <BaseIntermediateOutputPath>../../../build/obj/$(AssemblyName)</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)/$(Configuration)/</IntermediateOutputPath>
-    <DefineConstants>
-    </DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
@@ -75,10 +75,10 @@
       <HintPath>Components\ComponentFactory.Krypton.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Krypton.Toolkit, Version=80.23.11.321, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
       <HintPath>..\packages\Krypton.Toolkit.80.23.11.321\lib\net48\Krypton.Toolkit.dll</HintPath>
@@ -95,16 +95,8 @@
       <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.SQLite, Version=1.0.118.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
-      <HintPath>packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\lib\net46\System.Data.SQLite.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Data.SQLite.EF6, Version=1.0.118.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
-      <HintPath>packages\System.Data.SQLite.EF6.1.0.118.0\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Data.SQLite.Linq, Version=1.0.118.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
-      <HintPath>packages\System.Data.SQLite.Linq.1.0.118.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
-    </Reference>
     <Reference Include="System.Deployment" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
@@ -136,33 +128,71 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\EF.cs" />
+    <Compile Include="Classes\Settings.cs" />
+    <Compile Include="Controls\MetingenMGV\Classes\DataGridColumnFactory.cs" />
+    <Compile Include="Controls\MetingenMGV\Classes\DatagridviewHelper.cs" />
+    <Compile Include="Controls\MetingenMGV\Classes\TypeMethods.cs" />
+    <Compile Include="Controls\MetingenMGV\Custom\TNumEditBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\MetingenMGV\Custom\TNumEditDataGridViewElements.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\MetingenMGV\DetailTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\MetingenMGV\DgvResource.Designer.cs">
+      <DependentUpon>DgvResource.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Controls\MetingenMGV\MetingenMGV.cs" />
+    <Compile Include="Forms\Graphics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Graphics.Designer.cs">
+      <DependentUpon>Graphics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Analytics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Analytics.Designer.cs">
+      <DependentUpon>Analytics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Metingen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Metingen.Designer.cs">
+      <DependentUpon>Metingen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Context.cs" />
+    <Compile Include="Models\EF.cs" />
     <Compile Include="Classes\WaitWnd.cs" />
-    <Compile Include="Controls\MasterGridView\Classes\DataGridColumnFactory.cs" />
-    <Compile Include="Controls\MasterGridView\Classes\DatagridviewHelper.cs" />
-    <Compile Include="Controls\MasterGridView\Custom\TNumEditBox.cs">
+    <Compile Include="Controls\ZonesMGV\Classes\DataGridColumnFactory.cs" />
+    <Compile Include="Controls\ZonesMGV\Classes\DatagridviewHelper.cs" />
+    <Compile Include="Controls\ZonesMGV\Custom\TNumEditBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\MasterGridView\Custom\TNumEditDataGridViewElements.cs">
+    <Compile Include="Controls\ZonesMGV\Custom\TNumEditDataGridViewElements.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\MasterGridView\Classes\TypeMethods.cs" />
-    <Compile Include="Controls\MasterGridView\DetailTabControl.cs">
+    <Compile Include="Controls\ZonesMGV\Classes\TypeMethods.cs" />
+    <Compile Include="Controls\ZonesMGV\DetailTabControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\MasterGridView\DgvResource.Designer.cs">
+    <Compile Include="Controls\ZonesMGV\DgvResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DgvResource.resx</DependentUpon>
     </Compile>
-    <Compile Include="Controls\MasterGridView\MasterGridView.cs" />
+    <Compile Include="Controls\ZonesMGV\MasterGridView.cs" />
     <Compile Include="Forms\Data.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Data.Designer.cs">
       <DependentUpon>Data.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Json.cs" />
+    <Compile Include="Models\Json.cs" />
     <Compile Include="Forms\Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,16 +213,32 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Helpers\DataHelper.cs" />
+    <Compile Include="Classes\DataHelper.cs" />
     <Compile Include="Forms\WaitForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\WaitForm.Designer.cs">
       <DependentUpon>WaitForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Controls\MasterGridView\DgvResource.resx">
+    <EmbeddedResource Include="Controls\MetingenMGV\DgvResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DgvResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ZonesMGV\DgvResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DgvResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Graphics.resx">
+      <DependentUpon>Graphics.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Analytics.resx">
+      <DependentUpon>Analytics.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Metingen.resx">
+      <DependentUpon>Metingen.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Data.resx">
       <DependentUpon>Data.cs</DependentUpon>
@@ -224,9 +270,6 @@
       <DependentUpon>WaitForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="Data\LBM.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -239,6 +282,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Images\plus.png" />
+    <None Include="Images\24\abstract\plus_blue.png" />
+    <None Include="Images\24\abstract\minus_blue.png" />
+    <None Include="Images\16\abstract\minus_blue.png" />
+    <None Include="Images\16\abstract\plus_blue.png" />
+    <None Include="Images\min.png" />
     <Content Include="Krypton.ico" />
     <None Include="Resources\expanded.gif" />
     <None Include="Resources\collapsed.gif" />
@@ -262,7 +311,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\" />
+    <Folder Include="Data\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -272,9 +321,12 @@
     <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
     <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
     <Error Condition="!Exists('packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
   <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <Import Project="packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

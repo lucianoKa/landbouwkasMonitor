@@ -30,12 +30,17 @@ namespace LBM
             this.radioOffice2003 = new ComponentFactory.Krypton.Toolkit.KryptonRadioButton();
             this.radioSystem = new ComponentFactory.Krypton.Toolkit.KryptonRadioButton();
             this.kryptonManager = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
             // 
+            this.kryptonPanel1.Controls.Add(this.tabControl1);
             this.kryptonPanel1.Controls.Add(this.radio2010Black);
             this.kryptonPanel1.Controls.Add(this.radio2010Silver);
             this.kryptonPanel1.Controls.Add(this.radio2010Blue);
@@ -49,18 +54,16 @@ namespace LBM
             this.kryptonPanel1.Controls.Add(this.radioSystem);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(946, 544);
+            this.kryptonPanel1.Size = new System.Drawing.Size(866, 340);
             this.kryptonPanel1.TabIndex = 0;
             // 
             // radio2010Black
             // 
             this.radio2010Black.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel;
-            this.radio2010Black.Location = new System.Drawing.Point(20, 80);
-            this.radio2010Black.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radio2010Black.Location = new System.Drawing.Point(15, 65);
             this.radio2010Black.Name = "radio2010Black";
-            this.radio2010Black.Size = new System.Drawing.Size(151, 24);
+            this.radio2010Black.Size = new System.Drawing.Size(125, 20);
             this.radio2010Black.TabIndex = 2;
             this.radio2010Black.Values.Text = "Office 2010 - Black";
             this.radio2010Black.CheckedChanged += new System.EventHandler(this.radio2010Black_CheckedChanged);
@@ -68,10 +71,9 @@ namespace LBM
             // radio2010Silver
             // 
             this.radio2010Silver.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel;
-            this.radio2010Silver.Location = new System.Drawing.Point(20, 50);
-            this.radio2010Silver.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radio2010Silver.Location = new System.Drawing.Point(15, 41);
             this.radio2010Silver.Name = "radio2010Silver";
-            this.radio2010Silver.Size = new System.Drawing.Size(153, 24);
+            this.radio2010Silver.Size = new System.Drawing.Size(126, 20);
             this.radio2010Silver.TabIndex = 1;
             this.radio2010Silver.Values.Text = "Office 2010 - Silver";
             this.radio2010Silver.CheckedChanged += new System.EventHandler(this.radio2010Silver_CheckedChanged);
@@ -80,10 +82,9 @@ namespace LBM
             // 
             this.radio2010Blue.Checked = true;
             this.radio2010Blue.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel;
-            this.radio2010Blue.Location = new System.Drawing.Point(20, 21);
-            this.radio2010Blue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radio2010Blue.Location = new System.Drawing.Point(15, 17);
             this.radio2010Blue.Name = "radio2010Blue";
-            this.radio2010Blue.Size = new System.Drawing.Size(145, 24);
+            this.radio2010Blue.Size = new System.Drawing.Size(120, 20);
             this.radio2010Blue.TabIndex = 0;
             this.radio2010Blue.Values.Text = "Office 2010 - Blue";
             this.radio2010Blue.CheckedChanged += new System.EventHandler(this.radio2010Blue_CheckedChanged);
@@ -91,10 +92,9 @@ namespace LBM
             // radioSparkleOrange
             // 
             this.radioSparkleOrange.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel;
-            this.radioSparkleOrange.Location = new System.Drawing.Point(385, 50);
-            this.radioSparkleOrange.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioSparkleOrange.Location = new System.Drawing.Point(289, 41);
             this.radioSparkleOrange.Name = "radioSparkleOrange";
-            this.radioSparkleOrange.Size = new System.Drawing.Size(139, 24);
+            this.radioSparkleOrange.Size = new System.Drawing.Size(115, 20);
             this.radioSparkleOrange.TabIndex = 7;
             this.radioSparkleOrange.Values.Text = "Sparkle - Orange";
             this.radioSparkleOrange.CheckedChanged += new System.EventHandler(this.radioSparkleOrange_CheckedChanged);
@@ -102,10 +102,9 @@ namespace LBM
             // radioSparklePurple
             // 
             this.radioSparklePurple.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel;
-            this.radioSparklePurple.Location = new System.Drawing.Point(385, 80);
-            this.radioSparklePurple.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioSparklePurple.Location = new System.Drawing.Point(289, 65);
             this.radioSparklePurple.Name = "radioSparklePurple";
-            this.radioSparklePurple.Size = new System.Drawing.Size(132, 24);
+            this.radioSparklePurple.Size = new System.Drawing.Size(109, 20);
             this.radioSparklePurple.TabIndex = 8;
             this.radioSparklePurple.Values.Text = "Sparkle - Purple";
             this.radioSparklePurple.CheckedChanged += new System.EventHandler(this.radioSparklePurple_CheckedChanged);
@@ -113,10 +112,9 @@ namespace LBM
             // radioSparkleBlue
             // 
             this.radioSparkleBlue.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel;
-            this.radioSparkleBlue.Location = new System.Drawing.Point(385, 21);
-            this.radioSparkleBlue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioSparkleBlue.Location = new System.Drawing.Point(289, 17);
             this.radioSparkleBlue.Name = "radioSparkleBlue";
-            this.radioSparkleBlue.Size = new System.Drawing.Size(118, 24);
+            this.radioSparkleBlue.Size = new System.Drawing.Size(98, 20);
             this.radioSparkleBlue.TabIndex = 6;
             this.radioSparkleBlue.Values.Text = "Sparkle - Blue";
             this.radioSparkleBlue.CheckedChanged += new System.EventHandler(this.radioSparkleBlue_CheckedChanged);
@@ -124,10 +122,9 @@ namespace LBM
             // radioBlack
             // 
             this.radioBlack.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel;
-            this.radioBlack.Location = new System.Drawing.Point(200, 80);
-            this.radioBlack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioBlack.Location = new System.Drawing.Point(150, 65);
             this.radioBlack.Name = "radioBlack";
-            this.radioBlack.Size = new System.Drawing.Size(151, 24);
+            this.radioBlack.Size = new System.Drawing.Size(125, 20);
             this.radioBlack.TabIndex = 5;
             this.radioBlack.Values.Text = "Office 2007 - Black";
             this.radioBlack.CheckedChanged += new System.EventHandler(this.radioBlack_CheckedChanged);
@@ -135,10 +132,9 @@ namespace LBM
             // radioSilver
             // 
             this.radioSilver.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel;
-            this.radioSilver.Location = new System.Drawing.Point(200, 50);
-            this.radioSilver.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioSilver.Location = new System.Drawing.Point(150, 41);
             this.radioSilver.Name = "radioSilver";
-            this.radioSilver.Size = new System.Drawing.Size(153, 24);
+            this.radioSilver.Size = new System.Drawing.Size(126, 20);
             this.radioSilver.TabIndex = 4;
             this.radioSilver.Values.Text = "Office 2007 - Silver";
             this.radioSilver.CheckedChanged += new System.EventHandler(this.radioSilver_CheckedChanged);
@@ -146,10 +142,9 @@ namespace LBM
             // radioBlue
             // 
             this.radioBlue.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel;
-            this.radioBlue.Location = new System.Drawing.Point(200, 21);
-            this.radioBlue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioBlue.Location = new System.Drawing.Point(150, 17);
             this.radioBlue.Name = "radioBlue";
-            this.radioBlue.Size = new System.Drawing.Size(145, 24);
+            this.radioBlue.Size = new System.Drawing.Size(120, 20);
             this.radioBlue.TabIndex = 3;
             this.radioBlue.Values.Text = "Office 2007 - Blue";
             this.radioBlue.CheckedChanged += new System.EventHandler(this.radioBlue_CheckedChanged);
@@ -157,10 +152,9 @@ namespace LBM
             // radioOffice2003
             // 
             this.radioOffice2003.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel;
-            this.radioOffice2003.Location = new System.Drawing.Point(20, 127);
-            this.radioOffice2003.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioOffice2003.Location = new System.Drawing.Point(15, 103);
             this.radioOffice2003.Name = "radioOffice2003";
-            this.radioOffice2003.Size = new System.Drawing.Size(101, 24);
+            this.radioOffice2003.Size = new System.Drawing.Size(85, 20);
             this.radioOffice2003.TabIndex = 9;
             this.radioOffice2003.Values.Text = "Office 2003";
             this.radioOffice2003.CheckedChanged += new System.EventHandler(this.radioOffice2003_CheckedChanged);
@@ -168,10 +162,9 @@ namespace LBM
             // radioSystem
             // 
             this.radioSystem.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel;
-            this.radioSystem.Location = new System.Drawing.Point(200, 127);
-            this.radioSystem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioSystem.Location = new System.Drawing.Point(150, 103);
             this.radioSystem.Name = "radioSystem";
-            this.radioSystem.Size = new System.Drawing.Size(72, 24);
+            this.radioSystem.Size = new System.Drawing.Size(62, 20);
             this.radioSystem.TabIndex = 10;
             this.radioSystem.Values.Text = "System";
             this.radioSystem.CheckedChanged += new System.EventHandler(this.radioSystem_CheckedChanged);
@@ -180,20 +173,54 @@ namespace LBM
             // 
             this.kryptonManager.GlobalPaletteMode = ComponentFactory.Krypton.Toolkit.PaletteModeManager.Office2010Silver;
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.tabControl1.Location = new System.Drawing.Point(237, 200);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(262, 77);
+            this.tabControl1.TabIndex = 11;
+            this.tabControl1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.TabControl_DrawItem);
+            this.tabControl1.TabIndexChanged += new System.EventHandler(this.tabControl1_TabIndexChanged);
+            this.tabControl1.Click += new System.EventHandler(this.tabControl1_Click);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(254, 51);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(254, 51);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
             // Form2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(946, 544);
+            this.ClientSize = new System.Drawing.Size(866, 340);
             this.Controls.Add(this.kryptonPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form2";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -213,5 +240,8 @@ namespace LBM
         private ComponentFactory.Krypton.Toolkit.KryptonRadioButton radio2010Black;
         private ComponentFactory.Krypton.Toolkit.KryptonRadioButton radio2010Silver;
         private ComponentFactory.Krypton.Toolkit.KryptonRadioButton radio2010Blue;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
     }
 }

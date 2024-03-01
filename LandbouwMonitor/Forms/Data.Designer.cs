@@ -30,7 +30,11 @@ namespace LBM
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.btnSave = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.grpData = new System.Windows.Forms.GroupBox();
+            this.pnlData = new System.Windows.Forms.Panel();
+            this.dgvZones = new LBM.Controls.ZonesMGV.ZonesMGV();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.kryptonLabel4 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.txtZoneAmount = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel3 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.txtMeasurementsAmount = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonLabel2 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -41,16 +45,12 @@ namespace LBM
             this.label1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.txtName = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonManager = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
-            this.pnlData = new System.Windows.Forms.Panel();
-            this.dgvZones = new LBM.Controls.MasterGridView.MasterGridView();
-            this.kryptonLabel4 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.txtZoneAmount = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.grpData.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.pnlData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvZones)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonPanel1
@@ -60,19 +60,20 @@ namespace LBM
             this.kryptonPanel1.Controls.Add(this.groupBox1);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
-            this.kryptonPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(1600, 724);
+            this.kryptonPanel1.Size = new System.Drawing.Size(1200, 588);
             this.kryptonPanel1.TabIndex = 0;
             // 
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(1420, 676);
+            this.btnSave.Location = new System.Drawing.Point(1065, 549);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(145, 36);
+            this.btnSave.Size = new System.Drawing.Size(109, 29);
             this.btnSave.TabIndex = 15;
             this.btnSave.Values.Text = "Gegevens opslaan";
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // grpData
             // 
@@ -80,12 +81,47 @@ namespace LBM
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpData.Controls.Add(this.pnlData);
-            this.grpData.Location = new System.Drawing.Point(15, 195);
+            this.grpData.Location = new System.Drawing.Point(11, 158);
+            this.grpData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.grpData.Name = "grpData";
-            this.grpData.Size = new System.Drawing.Size(1573, 464);
+            this.grpData.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpData.Size = new System.Drawing.Size(1180, 377);
             this.grpData.TabIndex = 10;
             this.grpData.TabStop = false;
             this.grpData.Text = "Metingen";
+            // 
+            // pnlData
+            // 
+            this.pnlData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlData.Controls.Add(this.dgvZones);
+            this.pnlData.Location = new System.Drawing.Point(14, 31);
+            this.pnlData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlData.Name = "pnlData";
+            this.pnlData.Size = new System.Drawing.Size(1149, 325);
+            this.pnlData.TabIndex = 1;
+            // 
+            // dgvZones
+            // 
+            this.dgvZones.AllowUserToAddRows = false;
+            this.dgvZones.AllowUserToDeleteRows = false;
+            this.dgvZones.AllowUserToResizeRows = false;
+            this.dgvZones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvZones.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvZones.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvZones.Location = new System.Drawing.Point(0, 0);
+            this.dgvZones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvZones.MultiSelect = false;
+            this.dgvZones.Name = "dgvZones";
+            this.dgvZones.ReadOnly = true;
+            this.dgvZones.RowHeadersWidth = 51;
+            this.dgvZones.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvZones.RowTemplate.Height = 24;
+            this.dgvZones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvZones.ShowCellToolTips = false;
+            this.dgvZones.Size = new System.Drawing.Size(1149, 325);
+            this.dgvZones.TabIndex = 1;
             // 
             // groupBox1
             // 
@@ -102,152 +138,139 @@ namespace LBM
             this.groupBox1.Controls.Add(this.txtDate);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtName);
-            this.groupBox1.Location = new System.Drawing.Point(14, 12);
+            this.groupBox1.Location = new System.Drawing.Point(10, 10);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1574, 174);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(1180, 141);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             // 
+            // kryptonLabel4
+            // 
+            this.kryptonLabel4.Location = new System.Drawing.Point(272, 63);
+            this.kryptonLabel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.kryptonLabel4.Name = "kryptonLabel4";
+            this.kryptonLabel4.Size = new System.Drawing.Size(83, 20);
+            this.kryptonLabel4.TabIndex = 20;
+            this.kryptonLabel4.Values.Text = "Aantal zones:";
+            // 
+            // txtZoneAmount
+            // 
+            this.txtZoneAmount.Location = new System.Drawing.Point(382, 63);
+            this.txtZoneAmount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtZoneAmount.Name = "txtZoneAmount";
+            this.txtZoneAmount.ReadOnly = true;
+            this.txtZoneAmount.Size = new System.Drawing.Size(53, 23);
+            this.txtZoneAmount.TabIndex = 19;
+            // 
             // kryptonLabel3
             // 
-            this.kryptonLabel3.Location = new System.Drawing.Point(362, 34);
+            this.kryptonLabel3.Location = new System.Drawing.Point(272, 28);
+            this.kryptonLabel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.kryptonLabel3.Name = "kryptonLabel3";
-            this.kryptonLabel3.Size = new System.Drawing.Size(128, 24);
+            this.kryptonLabel3.Size = new System.Drawing.Size(103, 20);
             this.kryptonLabel3.TabIndex = 18;
             this.kryptonLabel3.Values.Text = "Aantal metingen:";
             // 
             // txtMeasurementsAmount
             // 
-            this.txtMeasurementsAmount.Location = new System.Drawing.Point(496, 34);
+            this.txtMeasurementsAmount.Location = new System.Drawing.Point(382, 28);
+            this.txtMeasurementsAmount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtMeasurementsAmount.Name = "txtMeasurementsAmount";
-            this.txtMeasurementsAmount.Size = new System.Drawing.Size(71, 27);
+            this.txtMeasurementsAmount.ReadOnly = true;
+            this.txtMeasurementsAmount.Size = new System.Drawing.Size(53, 23);
             this.txtMeasurementsAmount.TabIndex = 17;
             // 
             // kryptonLabel2
             // 
-            this.kryptonLabel2.Location = new System.Drawing.Point(19, 120);
+            this.kryptonLabel2.Location = new System.Drawing.Point(14, 98);
+            this.kryptonLabel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.kryptonLabel2.Name = "kryptonLabel2";
-            this.kryptonLabel2.Size = new System.Drawing.Size(64, 24);
+            this.kryptonLabel2.Size = new System.Drawing.Size(53, 20);
             this.kryptonLabel2.TabIndex = 16;
             this.kryptonLabel2.Values.Text = "Tijdstip:";
             // 
             // txtTime
             // 
-            this.txtTime.Location = new System.Drawing.Point(108, 120);
+            this.txtTime.Location = new System.Drawing.Point(81, 98);
+            this.txtTime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtTime.Name = "txtTime";
-            this.txtTime.Size = new System.Drawing.Size(97, 27);
+            this.txtTime.ReadOnly = true;
+            this.txtTime.Size = new System.Drawing.Size(73, 23);
             this.txtTime.TabIndex = 15;
             // 
             // btnGetData
             // 
             this.btnGetData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGetData.Location = new System.Drawing.Point(1422, 31);
+            this.btnGetData.Location = new System.Drawing.Point(1066, 25);
+            this.btnGetData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnGetData.Name = "btnGetData";
-            this.btnGetData.Size = new System.Drawing.Size(129, 30);
+            this.btnGetData.Size = new System.Drawing.Size(97, 24);
             this.btnGetData.TabIndex = 14;
             this.btnGetData.Values.Text = "Get data";
             this.btnGetData.Click += new System.EventHandler(this.BtnGetData_Click);
             // 
             // kryptonLabel1
             // 
-            this.kryptonLabel1.Location = new System.Drawing.Point(19, 77);
+            this.kryptonLabel1.Location = new System.Drawing.Point(14, 63);
+            this.kryptonLabel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(61, 24);
+            this.kryptonLabel1.Size = new System.Drawing.Size(50, 20);
             this.kryptonLabel1.TabIndex = 13;
             this.kryptonLabel1.Values.Text = "Datum:";
             // 
             // txtDate
             // 
-            this.txtDate.Location = new System.Drawing.Point(108, 77);
+            this.txtDate.Location = new System.Drawing.Point(81, 63);
+            this.txtDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtDate.Name = "txtDate";
-            this.txtDate.Size = new System.Drawing.Size(134, 27);
+            this.txtDate.ReadOnly = true;
+            this.txtDate.Size = new System.Drawing.Size(100, 23);
             this.txtDate.TabIndex = 12;
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(19, 34);
+            this.label1.Location = new System.Drawing.Point(14, 28);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 24);
+            this.label1.Size = new System.Drawing.Size(52, 20);
             this.label1.TabIndex = 11;
             this.label1.Values.Text = "Meting:";
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(108, 34);
+            this.txtName.Location = new System.Drawing.Point(81, 28);
+            this.txtName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(202, 27);
+            this.txtName.ReadOnly = true;
+            this.txtName.Size = new System.Drawing.Size(152, 23);
             this.txtName.TabIndex = 10;
             // 
             // kryptonManager
             // 
             this.kryptonManager.GlobalPaletteMode = ComponentFactory.Krypton.Toolkit.PaletteModeManager.Office2010Silver;
             // 
-            // pnlData
-            // 
-            this.pnlData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlData.Controls.Add(this.dgvZones);
-            this.pnlData.Location = new System.Drawing.Point(18, 38);
-            this.pnlData.Name = "pnlData";
-            this.pnlData.Size = new System.Drawing.Size(1532, 400);
-            this.pnlData.TabIndex = 1;
-            // 
-            // dgvZones
-            // 
-            this.dgvZones.AllowUserToAddRows = false;
-            this.dgvZones.AllowUserToDeleteRows = false;
-            this.dgvZones.AllowUserToResizeRows = false;
-            this.dgvZones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvZones.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvZones.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvZones.Location = new System.Drawing.Point(0, 0);
-            this.dgvZones.MultiSelect = false;
-            this.dgvZones.Name = "dgvZones";
-            this.dgvZones.ReadOnly = true;
-            this.dgvZones.RowHeadersWidth = 51;
-            this.dgvZones.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvZones.RowTemplate.Height = 24;
-            this.dgvZones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvZones.ShowCellToolTips = false;
-            this.dgvZones.Size = new System.Drawing.Size(1532, 400);
-            this.dgvZones.TabIndex = 1;
-            // 
-            // kryptonLabel4
-            // 
-            this.kryptonLabel4.Location = new System.Drawing.Point(362, 77);
-            this.kryptonLabel4.Name = "kryptonLabel4";
-            this.kryptonLabel4.Size = new System.Drawing.Size(102, 24);
-            this.kryptonLabel4.TabIndex = 20;
-            this.kryptonLabel4.Values.Text = "Aantal zones:";
-            // 
-            // txtZoneAmount
-            // 
-            this.txtZoneAmount.Location = new System.Drawing.Point(496, 77);
-            this.txtZoneAmount.Name = "txtZoneAmount";
-            this.txtZoneAmount.Size = new System.Drawing.Size(71, 27);
-            this.txtZoneAmount.TabIndex = 19;
-            // 
             // Data
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1600, 724);
+            this.ClientSize = new System.Drawing.Size(1200, 588);
             this.Controls.Add(this.kryptonPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Data";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Retrieve Data";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.grpData.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.pnlData.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvZones)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -269,7 +292,7 @@ namespace LBM
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnSave;
         private System.Windows.Forms.GroupBox grpData;
         private System.Windows.Forms.Panel pnlData;
-        private Controls.MasterGridView.MasterGridView dgvZones;
+        private Controls.ZonesMGV.ZonesMGV dgvZones;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel4;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtZoneAmount;
     }

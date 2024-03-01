@@ -1,94 +1,157 @@
-﻿// *****************************************************************************
-// 
-//  © Component Factory Pty Ltd 2012. All rights reserved.
-//	The software and associated documentation supplied hereunder are the 
-//  proprietary information of Component Factory Pty Ltd, PO Box 1504, 
-//  Glen Waverley, Vic 3150, Australia and are supplied subject to licence terms.
-// 
-//  Version 4.6.0.0 	www.ComponentFactory.com
-// *****************************************************************************
-
-using System;
-using System.Text;
-using System.Drawing;
+﻿using System;
 using System.Windows.Forms;
-using System.ComponentModel;
-using System.Collections.Generic;
-using ComponentFactory.Krypton.Ribbon;
+
 using ComponentFactory.Krypton.Toolkit;
 
 namespace LBM
 {
     public partial class Main : KryptonForm
     {
-        private int _count = 1;
-
+        #region Constructor
         public Main()
         {
             InitializeComponent();
 
+            CreateContextMenu();
         }
+        #endregion 
 
-        private void Form1_Load(object sender, EventArgs e)
+        #region Events
+
+        #region Home Tab
+        private void BtnGetData_Click(object sender, EventArgs e)
         {
-            Data f = new Data();
-            f.MdiParent = this;
-            f.WindowState = FormWindowState.Maximized;
-            f.Show();
+            OpenChild("Data");
         }
 
-        private void buttonNewWindow_Click(object sender, EventArgs e)
+        private void BtnShowData_Click(object sender, EventArgs e)
         {
-            // Add another MDI child window
-            AddMDIChildWindow();
+            OpenChild("Metingen");
         }
 
-        private void buttonCloseWindow_Click(object sender, EventArgs e)
+        private void BtnGraphics_Click(object sender, EventArgs e)
         {
-            // Close just the active child
-            if (ActiveMdiChild != null)
-                ActiveMdiChild.Close();
+            OpenChild("Graphics");
         }
 
-        private void buttonCloseAllWindows_Click(object sender, EventArgs e)
+        private void BtnAnalytics_Click(object sender, EventArgs e)
         {
-            // Keep closing active children until all gone
-            while (ActiveMdiChild != null)
-                ActiveMdiChild.Close();
+            OpenChild("Analytics");
+        }
+        private void BtnClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
-        private void buttonCascade_Click(object sender, EventArgs e)
+        #endregion 
+
+        #region View Tab
+        private void ButtonCascade_Click(object sender, EventArgs e)
         {
             LayoutMdi(MdiLayout.Cascade);
         }
 
-        private void buttonTileHorizontal_Click(object sender, EventArgs e)
+        private void ButtonTileHorizontal_Click(object sender, EventArgs e)
         {
             LayoutMdi(MdiLayout.TileHorizontal);
         }
 
-        private void buttonTileVertical_Click(object sender, EventArgs e)
+        private void ButtonTileVertical_Click(object sender, EventArgs e)
         {
             LayoutMdi(MdiLayout.TileVertical);
         }
 
-        private void buttonSpecHelp_Click(object sender, EventArgs e)
+        private void ButtonSpecHelp_Click(object sender, EventArgs e)
         {
             Form3 f = new Form3();
             f.ShowDialog();
         }
 
-        private void AddMDIChildWindow()
+        private void BtnStyles_Click(object sender, EventArgs e)
         {
-            Form2 f = new Form2();
-            f.Text = "Child " + (_count++).ToString();
-            f.MdiParent = this;
-            f.Show();
+            UncheckItems();
+
+            KryptonContextMenuItem item = (KryptonContextMenuItem)sender;
+
+            StyleManager.GlobalPaletteMode = (PaletteModeManager)item.Tag;
+
+            item.Checked = true;
         }
 
-        private void appMenu_Click(object sender, EventArgs e)
+        private void AppMenu_Click(object sender, EventArgs e)
         {
             Close();
+        }
+        #endregion 
+
+        #region Form events
+        private void Main_Resize(object sender, EventArgs e)
+        {
+            this.Refresh();
+        }
+
+        #endregion
+
+        #region ContextMenu
+
+        private void CreateContextMenu()
+        {
+            kryptonContextMenuItems2.Items.Add(new KryptonContextMenuItem(){ Text = "Professional", Tag = PaletteModeManager.ProfessionalSystem});
+            kryptonContextMenuItems2.Items.Add(new KryptonContextMenuItem() { Text = "Office 2003", Tag = PaletteModeManager.ProfessionalOffice2003 });
+            kryptonContextMenuItems2.Items.Add(new KryptonContextMenuItem() { Text = "Office 2010 - Blue", Tag = PaletteModeManager.Office2010Blue });
+            kryptonContextMenuItems2.Items.Add(new KryptonContextMenuItem() { Text = "Office 2010 - Silver", Tag = PaletteModeManager.Office2010Silver });
+            kryptonContextMenuItems2.Items.Add(new KryptonContextMenuItem() { Text = "Office 2010 - Black", Tag = PaletteModeManager.Office2010Black });
+            kryptonContextMenuItems2.Items.Add(new KryptonContextMenuItem() { Text = "Office 2007 - Blue", Tag = PaletteModeManager.Office2007Blue });
+            kryptonContextMenuItems2.Items.Add(new KryptonContextMenuItem() { Text = "Office 2007 - Silver", Tag = PaletteModeManager.Office2007Silver });
+            kryptonContextMenuItems2.Items.Add(new KryptonContextMenuItem() { Text = "Office 2007 - Black", Tag = PaletteModeManager.Office2007Black });
+            kryptonContextMenuItems2.Items.Add(new KryptonContextMenuItem() { Text = "Sparkle - Blue", Tag = PaletteModeManager.SparkleBlue });
+            kryptonContextMenuItems2.Items.Add(new KryptonContextMenuItem() { Text = "Sparkle - Orange", Tag = PaletteModeManager.SparkleOrange });
+            kryptonContextMenuItems2.Items.Add(new KryptonContextMenuItem() { Text = "Sparkle - Purple", Tag = PaletteModeManager.SparklePurple });
+
+            // Add Click Events
+            foreach (KryptonContextMenuItem item in kryptonContextMenuItems2.Items)
+            {
+                item.Click += BtnStyles_Click;
+                item.Checked = (PaletteModeManager)item.Tag == StyleManager.GlobalPaletteMode;
+            }
+        }
+
+        private void UncheckItems()
+        {
+            foreach (KryptonContextMenuItem item in kryptonContextMenuItems2.Items)
+            { 
+                item.Checked = false;
+            }
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Private Methods
+        private void OpenChild(string formName)
+        {
+            var form = Activator.CreateInstance(Type.GetType("LBM." + formName)) as Form;
+
+            //Close other forms first
+            while (ActiveMdiChild != null)
+                ActiveMdiChild.Close();
+
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
+        }
+
+
+
+        #endregion
+
+        private void kryptonRibbonGroupButton1_Click(object sender, EventArgs e)
+        {
+            Form2 form = new Form2();
+            form.MdiParent = this;
+            form.WindowState = FormWindowState.Maximized;
+            form.Show();
         }
     }
 }

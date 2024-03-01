@@ -10,7 +10,7 @@ namespace LBM
 
         public string Text { get; set; }
 
-        public void Show(string text = "Reading files, please wait...")
+        public void Show(string text = "Gegevens ophalen, even geduld aub...")
         {
             Cursor.Current = Cursors.WaitCursor;
             Text = text;
@@ -18,7 +18,7 @@ namespace LBM
             loadthread.Start();
         }
 
-        public void Show(Form parent, string text = "Reading files, please wait...")
+        public void Show(Form parent, string text = "Gegevens ophalen, even geduld aub...")
         {
             Cursor.Current = Cursors.WaitCursor;
             Text = text;

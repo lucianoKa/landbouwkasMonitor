@@ -1,3 +1,5 @@
+using System.Windows.Forms;
+
 namespace LBM
 {
     partial class Main
@@ -34,19 +36,31 @@ namespace LBM
             this.buttonSpecHelp = new ComponentFactory.Krypton.Toolkit.ButtonSpecAny();
             this.kryptonContextMenuItem1 = new ComponentFactory.Krypton.Toolkit.KryptonContextMenuItem();
             this.tabHome = new ComponentFactory.Krypton.Ribbon.KryptonRibbonTab();
-            this.kryptonRibbonGroup2 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup();
+            this.kgrOperations = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup();
             this.kryptonRibbonGroupTriple2 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple();
-            this.buttonNewWindow = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
+            this.btnGetData = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
+            this.btnShowData = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
             this.kryptonRibbonGroupSeparator1 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupSeparator();
             this.kryptonRibbonGroupTriple3 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple();
-            this.buttonCloseWindow = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
-            this.buttonCloseAllWindows = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
-            this.kryptonRibbonGroup1 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup();
+            this.btnGraphics = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
+            this.btnAnalytics = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
+            this.kryptonRibbonGroupSeparator2 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupSeparator();
+            this.kryptonRibbonGroupTriple1 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple();
+            this.btnClose = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
+            this.tabView = new ComponentFactory.Krypton.Ribbon.KryptonRibbonTab();
+            this.kgrArrange = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup();
             this.kryptonRibbonGroupTriple4 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple();
             this.buttonCascade = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
             this.buttonTileHorizontal = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
             this.buttonTileVertical = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
-            this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
+            this.kryptonRibbonGroupTriple5 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple();
+            this.btnStyles = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
+            this.KcmPalette = new ComponentFactory.Krypton.Toolkit.KryptonContextMenu();
+            this.kryptonContextMenuItems2 = new ComponentFactory.Krypton.Toolkit.KryptonContextMenuItems();
+            this.kryptonRibbonGroupButton1 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton();
+            this.kryptonRibbonGroup3 = new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup();
+            this.StyleManager = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
+            this.kryptonContextMenuItems1 = new ComponentFactory.Krypton.Toolkit.KryptonContextMenuItems();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,9 +75,10 @@ namespace LBM
             this.kryptonContextMenuItem1});
             this.ribbon.RibbonAppButton.AppButtonShowRecentDocs = false;
             this.ribbon.RibbonTabs.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonTab[] {
-            this.tabHome});
+            this.tabHome,
+            this.tabView});
             this.ribbon.SelectedTab = this.tabHome;
-            this.ribbon.Size = new System.Drawing.Size(923, 165);
+            this.ribbon.Size = new System.Drawing.Size(692, 115);
             this.ribbon.TabIndex = 0;
             // 
             // buttonSpecHelp
@@ -71,79 +86,106 @@ namespace LBM
             this.buttonSpecHelp.Image = ((System.Drawing.Image)(resources.GetObject("buttonSpecHelp.Image")));
             this.buttonSpecHelp.Style = ComponentFactory.Krypton.Toolkit.PaletteButtonStyle.ButtonSpec;
             this.buttonSpecHelp.UniqueName = "06E98F3735BC4B1106E98F3735BC4B11";
-            this.buttonSpecHelp.Click += new System.EventHandler(this.buttonSpecHelp_Click);
+            this.buttonSpecHelp.Click += new System.EventHandler(this.ButtonSpecHelp_Click);
             // 
             // kryptonContextMenuItem1
             // 
             this.kryptonContextMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("kryptonContextMenuItem1.Image")));
-            this.kryptonContextMenuItem1.Text = "E&xit";
-            this.kryptonContextMenuItem1.Click += new System.EventHandler(this.appMenu_Click);
+            this.kryptonContextMenuItem1.Text = "Sluit applicatie";
+            this.kryptonContextMenuItem1.Click += new System.EventHandler(this.AppMenu_Click);
             // 
             // tabHome
             // 
             this.tabHome.Groups.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup[] {
-            this.kryptonRibbonGroup2,
-            this.kryptonRibbonGroup1});
+            this.kgrOperations});
             this.tabHome.KeyTip = "H";
             this.tabHome.Text = "Home";
             // 
-            // kryptonRibbonGroup2
+            // kgrOperations
             // 
-            this.kryptonRibbonGroup2.DialogBoxLauncher = false;
-            this.kryptonRibbonGroup2.Image = ((System.Drawing.Image)(resources.GetObject("kryptonRibbonGroup2.Image")));
-            this.kryptonRibbonGroup2.Items.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupContainer[] {
+            this.kgrOperations.DialogBoxLauncher = false;
+            this.kgrOperations.Image = ((System.Drawing.Image)(resources.GetObject("kgrOperations.Image")));
+            this.kgrOperations.Items.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupContainer[] {
             this.kryptonRibbonGroupTriple2,
             this.kryptonRibbonGroupSeparator1,
-            this.kryptonRibbonGroupTriple3});
-            this.kryptonRibbonGroup2.KeyTipGroup = "O";
-            this.kryptonRibbonGroup2.TextLine1 = "Operations";
+            this.kryptonRibbonGroupTriple3,
+            this.kryptonRibbonGroupSeparator2,
+            this.kryptonRibbonGroupTriple1});
+            this.kgrOperations.KeyTipGroup = "O";
+            this.kgrOperations.TextLine1 = "Operations";
             // 
             // kryptonRibbonGroupTriple2
             // 
             this.kryptonRibbonGroupTriple2.Items.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupItem[] {
-            this.buttonNewWindow});
+            this.btnGetData,
+            this.btnShowData});
             // 
-            // buttonNewWindow
+            // btnGetData
             // 
-            this.buttonNewWindow.ImageLarge = ((System.Drawing.Image)(resources.GetObject("buttonNewWindow.ImageLarge")));
-            this.buttonNewWindow.ImageSmall = ((System.Drawing.Image)(resources.GetObject("buttonNewWindow.ImageSmall")));
-            this.buttonNewWindow.KeyTip = "N";
-            this.buttonNewWindow.TextLine1 = "New";
-            this.buttonNewWindow.TextLine2 = "Window";
-            this.buttonNewWindow.Click += new System.EventHandler(this.buttonNewWindow_Click);
+            this.btnGetData.ImageLarge = ((System.Drawing.Image)(resources.GetObject("btnGetData.ImageLarge")));
+            this.btnGetData.ImageSmall = ((System.Drawing.Image)(resources.GetObject("btnGetData.ImageSmall")));
+            this.btnGetData.KeyTip = "N";
+            this.btnGetData.TextLine1 = "Get data";
+            this.btnGetData.Click += new System.EventHandler(this.BtnGetData_Click);
+            // 
+            // btnShowData
+            // 
+            this.btnShowData.ImageLarge = ((System.Drawing.Image)(resources.GetObject("btnShowData.ImageLarge")));
+            this.btnShowData.ImageSmall = ((System.Drawing.Image)(resources.GetObject("btnShowData.ImageSmall")));
+            this.btnShowData.TextLine1 = "Show data";
+            this.btnShowData.Click += new System.EventHandler(this.BtnShowData_Click);
             // 
             // kryptonRibbonGroupTriple3
             // 
             this.kryptonRibbonGroupTriple3.Items.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupItem[] {
-            this.buttonCloseWindow,
-            this.buttonCloseAllWindows});
+            this.btnGraphics,
+            this.btnAnalytics});
             // 
-            // buttonCloseWindow
+            // btnGraphics
             // 
-            this.buttonCloseWindow.ImageLarge = ((System.Drawing.Image)(resources.GetObject("buttonCloseWindow.ImageLarge")));
-            this.buttonCloseWindow.ImageSmall = ((System.Drawing.Image)(resources.GetObject("buttonCloseWindow.ImageSmall")));
-            this.buttonCloseWindow.KeyTip = "X";
-            this.buttonCloseWindow.TextLine1 = "Close";
-            this.buttonCloseWindow.TextLine2 = "Window";
-            this.buttonCloseWindow.Click += new System.EventHandler(this.buttonCloseWindow_Click);
+            this.btnGraphics.ImageLarge = ((System.Drawing.Image)(resources.GetObject("btnGraphics.ImageLarge")));
+            this.btnGraphics.ImageSmall = ((System.Drawing.Image)(resources.GetObject("btnGraphics.ImageSmall")));
+            this.btnGraphics.KeyTip = "X";
+            this.btnGraphics.TextLine1 = "Graphics";
+            this.btnGraphics.Click += new System.EventHandler(this.BtnGraphics_Click);
             // 
-            // buttonCloseAllWindows
+            // btnAnalytics
             // 
-            this.buttonCloseAllWindows.ImageLarge = ((System.Drawing.Image)(resources.GetObject("buttonCloseAllWindows.ImageLarge")));
-            this.buttonCloseAllWindows.ImageSmall = ((System.Drawing.Image)(resources.GetObject("buttonCloseAllWindows.ImageSmall")));
-            this.buttonCloseAllWindows.KeyTip = "A";
-            this.buttonCloseAllWindows.TextLine1 = "Close All";
-            this.buttonCloseAllWindows.TextLine2 = "Windows";
-            this.buttonCloseAllWindows.Click += new System.EventHandler(this.buttonCloseAllWindows_Click);
+            this.btnAnalytics.ImageLarge = ((System.Drawing.Image)(resources.GetObject("btnAnalytics.ImageLarge")));
+            this.btnAnalytics.ImageSmall = ((System.Drawing.Image)(resources.GetObject("btnAnalytics.ImageSmall")));
+            this.btnAnalytics.KeyTip = "A";
+            this.btnAnalytics.TextLine1 = "Analytics";
+            this.btnAnalytics.Click += new System.EventHandler(this.BtnAnalytics_Click);
             // 
-            // kryptonRibbonGroup1
+            // kryptonRibbonGroupTriple1
             // 
-            this.kryptonRibbonGroup1.DialogBoxLauncher = false;
-            this.kryptonRibbonGroup1.Image = ((System.Drawing.Image)(resources.GetObject("kryptonRibbonGroup1.Image")));
-            this.kryptonRibbonGroup1.Items.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupContainer[] {
-            this.kryptonRibbonGroupTriple4});
-            this.kryptonRibbonGroup1.KeyTipGroup = "A";
-            this.kryptonRibbonGroup1.TextLine1 = "Arrange";
+            this.kryptonRibbonGroupTriple1.Items.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupItem[] {
+            this.btnClose});
+            // 
+            // btnClose
+            // 
+            this.btnClose.ImageLarge = ((System.Drawing.Image)(resources.GetObject("btnClose.ImageLarge")));
+            this.btnClose.ImageSmall = ((System.Drawing.Image)(resources.GetObject("btnClose.ImageSmall")));
+            this.btnClose.KeyTip = "C";
+            this.btnClose.TextLine1 = "Sluit ";
+            this.btnClose.TextLine2 = "Applicatie";
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
+            // 
+            // tabView
+            // 
+            this.tabView.Groups.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup[] {
+            this.kgrArrange});
+            this.tabView.Text = "View";
+            // 
+            // kgrArrange
+            // 
+            this.kgrArrange.DialogBoxLauncher = false;
+            this.kgrArrange.Image = ((System.Drawing.Image)(resources.GetObject("kgrArrange.Image")));
+            this.kgrArrange.Items.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupContainer[] {
+            this.kryptonRibbonGroupTriple4,
+            this.kryptonRibbonGroupTriple5});
+            this.kgrArrange.KeyTipGroup = "A";
+            this.kgrArrange.TextLine1 = "Arrange";
             // 
             // kryptonRibbonGroupTriple4
             // 
@@ -158,7 +200,7 @@ namespace LBM
             this.buttonCascade.ImageSmall = ((System.Drawing.Image)(resources.GetObject("buttonCascade.ImageSmall")));
             this.buttonCascade.KeyTip = "C";
             this.buttonCascade.TextLine1 = "Cascade";
-            this.buttonCascade.Click += new System.EventHandler(this.buttonCascade_Click);
+            this.buttonCascade.Click += new System.EventHandler(this.ButtonCascade_Click);
             // 
             // buttonTileHorizontal
             // 
@@ -167,7 +209,7 @@ namespace LBM
             this.buttonTileHorizontal.KeyTip = "H";
             this.buttonTileHorizontal.TextLine1 = "Tile";
             this.buttonTileHorizontal.TextLine2 = "Horizontal";
-            this.buttonTileHorizontal.Click += new System.EventHandler(this.buttonTileHorizontal_Click);
+            this.buttonTileHorizontal.Click += new System.EventHandler(this.ButtonTileHorizontal_Click);
             // 
             // buttonTileVertical
             // 
@@ -176,28 +218,52 @@ namespace LBM
             this.buttonTileVertical.KeyTip = "V";
             this.buttonTileVertical.TextLine1 = "Tile";
             this.buttonTileVertical.TextLine2 = "Vertical";
-            this.buttonTileVertical.Click += new System.EventHandler(this.buttonTileVertical_Click);
+            this.buttonTileVertical.Click += new System.EventHandler(this.ButtonTileVertical_Click);
             // 
-            // kryptonManager1
+            // kryptonRibbonGroupTriple5
             // 
-            this.kryptonManager1.GlobalPaletteMode = ComponentFactory.Krypton.Toolkit.PaletteModeManager.Office2010Silver;
+            this.kryptonRibbonGroupTriple5.Items.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupItem[] {
+            this.btnStyles,
+            this.kryptonRibbonGroupButton1});
+            // 
+            // btnStyles
+            // 
+            this.btnStyles.ButtonType = ComponentFactory.Krypton.Ribbon.GroupButtonType.DropDown;
+            this.btnStyles.ImageLarge = ((System.Drawing.Image)(resources.GetObject("btnStyles.ImageLarge")));
+            this.btnStyles.ImageSmall = ((System.Drawing.Image)(resources.GetObject("btnStyles.ImageSmall")));
+            this.btnStyles.KryptonContextMenu = this.KcmPalette;
+            this.btnStyles.Click += new System.EventHandler(this.BtnStyles_Click);
+            // 
+            // KcmPalette
+            // 
+            this.KcmPalette.Items.AddRange(new ComponentFactory.Krypton.Toolkit.KryptonContextMenuItemBase[] {
+            this.kryptonContextMenuItems2});
+            // 
+            // kryptonRibbonGroupButton1
+            // 
+            this.kryptonRibbonGroupButton1.Click += new System.EventHandler(this.kryptonRibbonGroupButton1_Click);
+            // 
+            // StyleManager
+            // 
+            this.StyleManager.GlobalPaletteMode = ComponentFactory.Krypton.Toolkit.PaletteModeManager.ProfessionalSystem;
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 635);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(692, 516);
             this.Controls.Add(this.ribbon);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(461, 420);
+            this.MinimumSize = new System.Drawing.Size(350, 349);
             this.Name = "Main";
-            this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Silver;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Landbouw Monitor";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Resize += new System.EventHandler(this.Main_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -208,21 +274,33 @@ namespace LBM
 
         private ComponentFactory.Krypton.Ribbon.KryptonRibbon ribbon;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonTab tabHome;
-        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup kryptonRibbonGroup2;
+        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup kgrOperations;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple kryptonRibbonGroupTriple2;
-        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton buttonNewWindow;
+        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton btnGetData;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupSeparator kryptonRibbonGroupSeparator1;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple kryptonRibbonGroupTriple3;
-        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton buttonCloseWindow;
-        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton buttonCloseAllWindows;
-        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup kryptonRibbonGroup1;
+        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton btnGraphics;
+        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton btnAnalytics;
+        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup kgrArrange;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple kryptonRibbonGroupTriple4;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton buttonCascade;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton buttonTileHorizontal;
         private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton buttonTileVertical;
         private ComponentFactory.Krypton.Toolkit.ButtonSpecAny buttonSpecHelp;
         private ComponentFactory.Krypton.Toolkit.KryptonContextMenuItem kryptonContextMenuItem1;
-        private ComponentFactory.Krypton.Toolkit.KryptonManager kryptonManager1;
+        private ComponentFactory.Krypton.Toolkit.KryptonManager StyleManager;
+        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton btnShowData;
+        private ComponentFactory.Krypton.Ribbon.KryptonRibbonTab tabView;
+        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroup kryptonRibbonGroup3;
+        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupSeparator kryptonRibbonGroupSeparator2;
+        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple kryptonRibbonGroupTriple1;
+        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton btnClose;
+        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupTriple kryptonRibbonGroupTriple5;
+        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton btnStyles;
+        private ComponentFactory.Krypton.Toolkit.KryptonContextMenu KcmPalette;
+        private ComponentFactory.Krypton.Toolkit.KryptonContextMenuItems kryptonContextMenuItems2;
+        private ComponentFactory.Krypton.Toolkit.KryptonContextMenuItems kryptonContextMenuItems1;
+        private ComponentFactory.Krypton.Ribbon.KryptonRibbonGroupButton kryptonRibbonGroupButton1;
     }
 }
 
