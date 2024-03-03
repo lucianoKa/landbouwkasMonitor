@@ -76,6 +76,7 @@ namespace LBM
             this.ribbon.RibbonTabs.AddRange(new ComponentFactory.Krypton.Ribbon.KryptonRibbonTab[] {
             this.tabHome,
             this.tabView});
+            this.ribbon.SelectedContext = null;
             this.ribbon.SelectedTab = this.tabView;
             this.ribbon.Size = new System.Drawing.Size(923, 135);
             this.ribbon.TabIndex = 0;

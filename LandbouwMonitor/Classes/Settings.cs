@@ -1,4 +1,6 @@
 ﻿using System.Configuration;
+using System.IO;
+using System.Windows.Forms;
 
 namespace LBM
 {
@@ -12,7 +14,7 @@ namespace LBM
         { 
             get 
             {
-                string databasefile = ConfigurationManager.AppSettings["datafile"];
+                string databasefile = Path.Combine(Application.StartupPath, "Data", ConfigurationManager.AppSettings["datafile"]);
                 return $"Data Source={dataSource};AttachDbFilename={databasefile};Integrated Security=True"; 
             } 
         }

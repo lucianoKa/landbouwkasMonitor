@@ -13,6 +13,8 @@ namespace LBM
             InitializeComponent();
 
             CreateContextMenu();
+
+            ribbon.SelectedTab = tabHome;
         }
         #endregion 
 
@@ -90,6 +92,17 @@ namespace LBM
             this.Refresh();
         }
 
+        private void Main_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.Q)
+            {
+                GenerateData form = new GenerateData();
+                form.MdiParent = this;
+                //form.WindowState = FormWindowState.Maximized;
+                form.Show();
+            }
+        }
+
         #endregion
 
         #region ContextMenu
@@ -146,16 +159,5 @@ namespace LBM
 
         #endregion
 
-
-        private void Main_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Control && e.KeyCode == Keys.Q)
-            {
-                Form2 form = new Form2();
-                form.MdiParent = this;
-                //form.WindowState = FormWindowState.Maximized;
-                form.Show();
-            }
-        }
     }
 }

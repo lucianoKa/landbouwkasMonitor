@@ -66,6 +66,146 @@ namespace LBM
             return root;
         }
 
+        public static async Task SaveToDatabase(EF.Root root)
+        {
+            await Task.Delay(TimeSpan.FromSeconds(1));
+
+            using (var ctx = new DatabaseContext())
+            {
+                //Save Metadata
+                ctx.Metadata.Add(root.Metadata);
+                ctx.SaveChanges();
+                int metadataId = root.Metadata.Id;
+
+                //Save Metingen
+                foreach (var meting in root.Record.Metingen)
+                {
+                    meting.MetadataId = metadataId;
+                    ctx.Metingen.Add(meting);
+                    ctx.SaveChanges();
+                    int metingId = meting.Id;
+
+                    //Save Zones
+                    foreach (var zone in meting.Zones)
+                    {
+                        zone.Id = 0;
+                        zone.MetingId = metingId;
+                        ctx.Zones.Add(zone);
+                        ctx.SaveChanges();
+                        int zoneId = zone.Id;
+
+                        //Save Gewassen
+                        foreach (var gewas in zone.Gewassen)
+                        {
+                            gewas.ZoneId = zoneId;
+                            ctx.Gewassen.Add(gewas);
+                            ctx.SaveChanges();
+                        }
+                    }
+                }
+            }
+        }
+
+        public static List<EF.Meting> GetMetingen()
+        {
+            List<EF.Meting> metingen;
+
+            using (var ctx = new DatabaseContext())
+            {
+                metingen = ctx.Metingen.ToList();
+
+                foreach (var meting in metingen)
+                {
+                    meting.Name = "Kas Monitor";
+
+                    meting.Zones = ctx.Zones.Where(x => x.MetingId == meting.Id).ToList();
+
+                    foreach (var zone in meting.Zones)
+                    {
+                        zone.ZoneNaamEx = GetZoneNaamEx(zone.ZoneNaam, zone.Gewassen);
+                        zone.Gewassen = ctx.Gewassen.Where(x => x.ZoneId == zone.Id).ToList();
+
+                        foreach (var gewas in zone.Gewassen)
+                        {
+                            gewas.Temperatuur = string.Format("{0} {1}", gewas.TWaarde.ToString(), GetUnitString(gewas.TEenheid));
+                            gewas.Vochtigheid = string.Format("{0} {1}", gewas.VWaarde.ToString(), GetUnitString(gewas.VEenheid));
+                        }
+                    }
+                }
+            }
+
+            return metingen;
+        }
+
+        public static EF.Metadata GetMetadata(int id)
+        {
+            EF.Metadata metadata;
+            using (var ctx = new DatabaseContext())
+            {
+                metadata = ctx.Metadata.Where(x => x.Id == id).FirstOrDefault();
+            }
+
+            return metadata;
+        }
+
+        public static List<string> GetZoneList()
+        {
+            List<string> zones;
+            using (var ctx = new DatabaseContext())
+            {
+                zones = ctx.Zones.Select(x => x.ZoneNaam).Distinct().ToList();
+            }
+
+            return zones;
+        }
+
+        public static List<string> GetGewassenList()
+        {
+            List<string> gewassen;
+            using (var ctx = new DatabaseContext())
+            {
+                gewassen = ctx.Gewassen.Select(x => x.GewasNaam).Distinct().ToList();
+            }
+
+            return gewassen;
+        }
+
+        public static List<EF.Gewas> GetGewassen(DateTime dateFrom, DateTime dateTo)
+        {
+            List<EF.Gewas> gewassen = new List<EF.Gewas>();
+            using (var ctx = new DatabaseContext())
+            {
+                var rngMetingen = ctx.Metingen.Where(x => x.Meetdatum >= dateFrom && x.Meetdatum <= dateTo).ToList();
+
+                foreach (var meting in rngMetingen)
+                { 
+                    var rngZones = ctx.Zones.Where(x => x.MetingId == meting.Id).ToList();
+
+                    foreach (var zone in rngZones)
+                    {
+                        var rngGewassen = ctx.Gewassen.Where(p => p.ZoneId == zone.Id).ToList();
+
+                        foreach (var gewas in rngGewassen)
+                        { 
+                            gewas.MeetDatum = meting.Meetdatum;
+                            gewas.ZoneNaam = zone.ZoneNaam;
+                            gewassen.Add(gewas);
+                        }
+                    }
+                }
+
+                //var rngMetingen = ctx.Metingen.Where(x => x.Meetdatum >= dateFrom && x.Meetdatum <= dateTo).Select(x => x.Id).ToList();
+                //var rngZones = ctx.Zones.Where(x => rngMetingen.Contains(x.MetingId)).Select(y => y.Id ).ToList();  
+
+                //gewassen = ctx.Gewassen.Where(p => p.GewasNaam.ToLower() == gewas && rngZones.Contains(p.ZoneId)).ToList();
+            }
+
+            return gewassen;
+        }
+
+        #endregion
+
+        #region Private Methods
         private static List<EF.Meting> MapMetingen(List<Json.Meting> jMetingen)
         {
             List<EF.Meting> metingen = new List<EF.Meting>();
@@ -157,90 +297,6 @@ namespace LBM
             return gewassen;
         }
 
-        public static async Task SaveToDatabase(EF.Root root)
-        {
-            await Task.Delay(TimeSpan.FromSeconds(1));
-
-            using (var ctx = new DatabaseContext())
-            {
-                //Save Metadata
-                ctx.Metadata.Add(root.Metadata);
-                ctx.SaveChanges();
-                int metadataId = root.Metadata.Id;
-
-                //Save Metingen
-                foreach(var meting in root.Record.Metingen)
-                {
-                    meting.MetadataId = metadataId;
-                    ctx.Metingen.Add(meting);
-                    ctx.SaveChanges();
-                    int metingId = meting.Id;
-
-                    //Save Zones
-                    foreach (var zone in meting.Zones)
-                    {
-                        zone.Id = 0;
-                        zone.MetingId = metingId;
-                        ctx.Zones.Add(zone);
-                        ctx.SaveChanges();
-                        int zoneId = zone.Id;
-
-                        //Save Gewassen
-                        foreach (var gewas in zone.Gewassen)
-                        {
-                            gewas.ZoneId = zoneId;
-                            ctx.Gewassen.Add(gewas);
-                            ctx.SaveChanges();
-                        }
-                    }
-                }                
-            }
-        }
-
-        public static List<EF.Meting> GetMetingen()
-        {
-            List<EF.Meting> metingen;
-
-            using (var ctx = new DatabaseContext())
-            {
-                metingen = ctx.Metingen.ToList();
-
-                foreach (var meting in metingen)
-                {
-                    meting.Name = "Kas Monitor";
-
-                    meting.Zones = ctx.Zones.Where(x => x.MetingId == meting.Id).ToList();
-
-                    foreach (var zone in meting.Zones)
-                    {
-                        zone.ZoneNaamEx = GetZoneNaamEx(zone.ZoneNaam, zone.Gewassen);
-                        zone.Gewassen = ctx.Gewassen.Where(x => x.ZoneId == zone.Id).ToList();
-
-                        foreach (var gewas in zone.Gewassen)
-                        { 
-                            gewas.Temperatuur = string.Format("{0} {1}", gewas.TWaarde.ToString(), GetUnitString(gewas.TEenheid));
-                            gewas.Vochtigheid = string.Format("{0} {1}", gewas.VWaarde.ToString(), GetUnitString(gewas.VEenheid));
-                        }
-                    }
-                }
-            }
-
-            return metingen;
-        }
-
-        public static EF.Metadata GetMetadata(int id)
-        {
-            EF.Metadata metadata;
-            using (var ctx = new DatabaseContext())
-            {
-                metadata = ctx.Metadata.Where(x => x.Id == id).FirstOrDefault();
-            }
-
-            return metadata;
-        }
-
-        #endregion
-
         private static string GetUnitString(string value)
         {
             switch (value.ToLower())
@@ -291,5 +347,7 @@ namespace LBM
 
             return fullName;
         }
+
+        #endregion 
     }
 }

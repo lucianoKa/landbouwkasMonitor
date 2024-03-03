@@ -5,11 +5,11 @@ using ComponentFactory.Krypton.Toolkit;
 
 namespace LBM
 {
-    public partial class Form2 : KryptonForm
+    public partial class GenerateData : KryptonForm
     {
         private WaitWnd _waitForm = new WaitWnd();
 
-        public Form2()
+        public GenerateData()
         {
             InitializeComponent();
         }
@@ -28,15 +28,19 @@ namespace LBM
         {
         }
 
-        private async Task GenerateData()
+        private async void BtnGetData_Click(object sender, EventArgs e)
+        {
+            await Generate((int)numDays.Value);
+        }
+
+        private async Task Generate(int amountDays)
         {
             btnGetData.Enabled = false;
 
             //Show WaitForm
             _waitForm.Show(this.ParentForm);
 
-
-            for (int x = 15; x > 0; x--)
+            for (int x = amountDays; x > 0; x--)
             {
                 DateTime date = DateTime.Now.AddDays(-x);
 
@@ -74,20 +78,16 @@ namespace LBM
             List<EF.Zone> zones = new List<EF.Zone>();
 
             #region Zone 1
-            var zone1Gewassen = new List<EF.Gewas>
-            {
-                GenerateGewas("Tomaten"),
-                GenerateGewas("Paprika")
-            };
-
-            EF.Zone zone1 = new EF.Zone()
+            zones.Add(new EF.Zone()
             {
                 Number = 1,
                 ZoneNaam = "Zone 1",
-                Gewassen = zone1Gewassen
-            };
-
-            zones.Add(zone1);
+                Gewassen = new List<EF.Gewas>
+                            {
+                                GenerateGewas("Tomaten"),
+                                GenerateGewas("Paprika")
+                            }
+            });
             #endregion
 
             #region Zone 2
@@ -97,81 +97,69 @@ namespace LBM
                 GenerateGewas("Courgette")
             };
 
-            EF.Zone zone2 = new EF.Zone()
+            zones.Add(new EF.Zone()
             {
                 Number = 2,
                 ZoneNaam = "Zone 2",
-                Gewassen = zone1Gewassen
-            };
-
-            zones.Add(zone2);
+                Gewassen = new List<EF.Gewas>
+                            {
+                                GenerateGewas("Komkommer"),
+                                GenerateGewas("Courgette")
+                            }
+            });
             #endregion
 
             #region Zone 3
-            var zone3Gewassen = new List<EF.Gewas>
-            {
-                GenerateGewas("Aubergine"),
-                GenerateGewas("Radijs")
-            };
-
             EF.Zone zone3 = new EF.Zone()
             {
                 Number = 3,
                 ZoneNaam = "Zone 3",
-                Gewassen = zone1Gewassen
+                Gewassen = new List<EF.Gewas>
+                            {
+                                GenerateGewas("Aubergine"),
+                                GenerateGewas("Radijs")
+                            }
             };
 
             zones.Add(zone3);
             #endregion
 
             #region Zone 4
-            var zone4Gewassen = new List<EF.Gewas>
-            {
-                GenerateGewas("Wortels"),
-                GenerateGewas("Spinazie")
-            };
-
-            EF.Zone zone4 = new EF.Zone()
+            zones.Add(new EF.Zone()
             {
                 Number = 4,
                 ZoneNaam = "Zone 4",
-                Gewassen = zone1Gewassen
-            };
-
-            zones.Add(zone4);
+                Gewassen = new List<EF.Gewas>
+                {
+                    GenerateGewas("Wortels"),
+                    GenerateGewas("Spinazie")
+                }
+            });
             #endregion
 
             #region Zone 5
-            var zone5Gewassen = new List<EF.Gewas>
-            {
-                GenerateGewas("Sla")
-            };
-
-            EF.Zone zone5 = new EF.Zone()
+            zones.Add(new EF.Zone()
             {
                 Number = 5,
                 ZoneNaam = "Zone 5",
-                Gewassen = zone1Gewassen
-            };
-
-            zones.Add(zone5);
+                Gewassen = new List<EF.Gewas>
+                            {
+                                GenerateGewas("Sla")
+                            }
+            });
             #endregion
 
             #region Zone 6
-            var zone6Gewassen = new List<EF.Gewas>
-            {
-                GenerateGewas("Bloemkool"),
-                GenerateGewas("Broccoli")
-            };
-
-            EF.Zone zone6 = new EF.Zone()
+            zones.Add(new EF.Zone()
             {
                 Number = 6,
                 ZoneNaam = "Zone 6",
-                Gewassen = zone1Gewassen
-            };
-
-            zones.Add(zone6);
+                Gewassen = new List<EF.Gewas>
+                {
+                    GenerateGewas("Bloemkool"),
+                    GenerateGewas("Broccoli")
+                }
+            });
             #endregion
 
             return zones;
@@ -226,9 +214,6 @@ namespace LBM
             return Math.Round((decimal)dbl, 2);
         }
 
-        private async void BtnGetData_Click(object sender, EventArgs e)
-        {
-            await GenerateData();
-        }
+
     }
 }

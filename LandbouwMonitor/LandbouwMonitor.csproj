@@ -204,6 +204,7 @@
     <Compile Include="Forms\Data.Designer.cs">
       <DependentUpon>Data.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\Json.cs" />
     <Compile Include="Forms\Main.cs">
       <SubType>Form</SubType>
@@ -211,11 +212,11 @@
     <Compile Include="Forms\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Form2.cs">
+    <Compile Include="Forms\GenerateData.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <Compile Include="Forms\GenerateData.Designer.cs">
+      <DependentUpon>GenerateData.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Form3.cs">
       <SubType>Form</SubType>
@@ -263,9 +264,9 @@
       <SubType>Designer</SubType>
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form2.resx">
+    <EmbeddedResource Include="Forms\GenerateData.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>Form2.cs</DependentUpon>
+      <DependentUpon>GenerateData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form3.resx">
       <SubType>Designer</SubType>

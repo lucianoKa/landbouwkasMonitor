@@ -66,6 +66,13 @@ namespace LBM
             public int ZoneId { get; set; }
             public string GewasNaam { get; set; }
 
+            // DateTime & Zone needed for Graph
+            [NotMapped]
+            public DateTime MeetDatum { get; set; }
+
+            [NotMapped]
+            public string ZoneNaam { get; set; }
+
             #region Temperatuur
 
             [NotMapped]
